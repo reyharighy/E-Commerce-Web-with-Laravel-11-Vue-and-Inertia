@@ -69,6 +69,9 @@
   "resources/js/Pages/Dashboard.vue": [
     "/build/assets/Dashboard-FgtjTq6u.js"
   ],
+  "resources/js/Pages/HomePage/Index.vue": [
+    "/build/assets/Index-2mOtgIAF.js"
+  ],
   "resources/js/Pages/Profile/Edit.vue": [
     "/build/assets/Edit-DMbx8acb.js"
   ],
