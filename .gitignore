@@ -5,7 +5,9 @@
 /public/storage
 /storage/*.key
 /storage/pail
-/vendor
+/vendor/*
+!/vendor/composer
+!/vendor/pest-plugins.json
 .env.backup
 .env.production
 .phpactor.json
