@@ -1,6 +1,8 @@
+bootstrap/ssr/assets
 /.phpunit.cache
-/node_modules/*
+/node_modules
 !/node_modules/.package-lock.json
+/public/build/assets
 /public/hot
 /public/storage
 /storage/*.key
