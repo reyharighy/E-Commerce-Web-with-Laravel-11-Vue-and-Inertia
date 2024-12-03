@@ -1,12 +1,3 @@
-<script setup>
-defineProps({
-    exampleProps: String
-})
-</script>
-
 <template>
-    <div>Home Page</div>
-    <div>
-        The message is "{{ exampleProps }}".
-    </div>
+    <div>The content of the home page</div>
 </template>
