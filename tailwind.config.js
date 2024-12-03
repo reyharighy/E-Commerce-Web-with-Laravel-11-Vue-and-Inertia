@@ -14,9 +14,17 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                'integralcf-extrabold': ['IntegralCF-ExtraBold', 'sans-serif']
             },
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        forms,
+        require('@headlessui/tailwindcss')({ prefix:'ui' })
+    ],
+
+    "editor.quickSuggestions": {
+        "strings": "on"
+    }
 };
