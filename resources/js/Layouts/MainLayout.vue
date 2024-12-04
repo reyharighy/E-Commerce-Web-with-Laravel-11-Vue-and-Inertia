@@ -18,20 +18,30 @@ import {
     Bars3Icon,
     ShoppingBagIcon,
     ShoppingCartIcon,
-    XMarkIcon,
-
+    XMarkIcon
 } from '@heroicons/vue/24/outline'
 
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 
-const shopSubMenu = [
-    { name: 'Shop-1', id:"shop-1", description: 'Description of Shop-1', href: '#', icon: ShoppingBagIcon }, // Undefined href
+const dropDownMenu = [
+    { name: "Shop", id: "shop"},
+    { name: "Top Sales", id:"top-sales"}
 ]
 
+const subMenu = {
+    "Shop": [
+        { name: "Shop-1", id: "shop-1", description: "Description of Shop-1", href: "/", icon: ShoppingBagIcon }, // Undefined href
+        { name: "Shop-2", id: "shop-2", description: "Description of Shop-2", href: "/", icon: ShoppingBagIcon }, // Undefined href
+    ],
+    "Top Sales": [
+        { name: "Top Sales-1", id: "top-sales-1", description: "Description of Top Sales-1", href: "/", icon: ShoppingBagIcon }, // Undefined href
+        { name: "Top Sales-2", id: "top-sales-2", description: "Description of Top Sales-2", href: "/", icon: ShoppingBagIcon }, // Undefined href
+    ]
+}
+
 const navbarMenu = [
-    { name: "Top Sales", id:"top-sales", href: '#' },   // Undefined href
-    { name: "Offers", id:"offers", href: '#' },         // Undefined href
-    { name: "Sellers", id:"sellers", href: '#' }        // Undefined href
+    { name: "Offers", id:"offers", href: "/" },         // Undefined href
+    { name: "Sellers", id:"sellers", href: "/" }        // Undefined href
 ]
 
 const mobileMenuOpen = ref(false)
@@ -59,24 +69,24 @@ const mobileMenuOpen = ref(false)
 
             <!--Popup/Dropdown Menu-->
             <PopoverGroup class="hidden items-center justify-around lg:flex lg:gap-x-12">
-                <Popover class="relative">
-                    <PopoverButton class="flex items-center gap-x-1 text-sm/1 font-semibold text-gray-900">
-                        Shop <ChevronDownIcon class="size-5 flex-none text-gray-400" aria-hidden="true" />
+                <Popover v-for="category in dropDownMenu" :key="category.id" class="relative">
+                    <PopoverButton class="flex items-center gap-x-1 text-sm/1 font-semibold text-gray-900 focus:outline-none focus:ring-0 focus:border-0">
+                        {{ category.name }} <ChevronDownIcon class="size-5 flex-none text-gray-400" aria-hidden="true" />
                     </PopoverButton>
         
                     <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
                         <PopoverPanel class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
                             <div class="p-4">
-                                <div v-for="item in shopSubMenu" :key="item.name" class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-50">
+                                <div v-for="menu in subMenu[category.name]" :key="menu.name" class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-50">
                                     <div class="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                        <component :is="item.icon" class="size-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
+                                        <component :is="menu.icon" class="size-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                                     </div>
                                     <div class="flex-auto">
-                                        <Link :href="item.href" class="block font-semibold text-gray-900">
-                                            {{ item.name }}
+                                        <Link :href="menu.href" class="block font-semibold text-gray-900">
+                                            {{ menu.name }}
                                             <span class="absolute inset-0" />
                                         </Link>
-                                        <p class="mt-1 text-gray-600">{{ item.description }}</p>
+                                        <p class="mt-1 text-gray-600">{{ menu.description }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +95,7 @@ const mobileMenuOpen = ref(false)
                 </Popover>
                 
                 <!--Non Dropdown Menu-->
-                <Link v-for="menu in navbarMenu" :key="menu.id" class="text-sm/1 font-semibold text-gray-900">{{ menu.name }}</Link>
+                <Link v-for="menu in navbarMenu" :href="menu.href" :key="menu.id" class="text-sm/1 font-semibold text-gray-900">{{ menu.name }}</Link>
             </PopoverGroup>
 
             <!--Cart and Log In-->
@@ -130,9 +140,7 @@ const mobileMenuOpen = ref(false)
                             </Disclosure>
 
                             <!--Non Dropdown Menu-->
-                            <div v-for="menu in navbarMenu" :key="menu.id">
-                                <Link :href="menu.href" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">{{ menu.name }}</Link>
-                            </div>
+                            <Link v-for="menu in navbarMenu" :href="menu.href" :key="menu.id" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">{{ menu.name }}</Link>
                         </div>
                         
                         <!--Log In-->
@@ -144,4 +152,5 @@ const mobileMenuOpen = ref(false)
             </DialogPanel>
         </Dialog>
     </header>
+    <slot></slot>
 </template>
