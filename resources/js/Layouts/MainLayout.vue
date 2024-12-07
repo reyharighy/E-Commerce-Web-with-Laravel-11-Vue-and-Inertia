@@ -34,18 +34,18 @@ const dropDownMenu = [
 
 const subMenu = {
     "Shop": [
-        { name: "Shop-1", id: "shop-1", description: "Description of Shop-1", href: route('home.index'), icon: ShoppingBagIcon }, // Undefined href
-        { name: "Shop-2", id: "shop-2", description: "Description of Shop-2", href: route('home.show'), icon: ShoppingBagIcon }, // Undefined href
+        { name: "Shop-1", id: "shop-1", description: "Description of Shop-1", href: "#", icon: ShoppingBagIcon },
+        { name: "Shop-2", id: "shop-2", description: "Description of Shop-2", href: "#", icon: ShoppingBagIcon },
     ],
     "Top Sales": [
-        { name: "Top Sales-1", id: "top-sales-1", description: "Description of Top Sales-1", href: route('home.index'), icon: ShoppingBagIcon }, // Undefined href
-        { name: "Top Sales-2", id: "top-sales-2", description: "Description of Top Sales-2", href: route('home.show'), icon: ShoppingBagIcon }, // Undefined href
+        { name: "Top Sales-1", id: "top-sales-1", description: "Description of Top Sales-1", href: "#", icon: ShoppingBagIcon },
+        { name: "Top Sales-2", id: "top-sales-2", description: "Description of Top Sales-2", href: "#", icon: ShoppingBagIcon },
     ]
 }
 
 const navbarMenu = [
-    { name: "Offers", id:"offers", href: route('home.index') },
-    { name: "Sellers", id:"sellers", href: route('home.show') }
+    { name: "Offers", id:"offers", href: "#" },
+    { name: "Sellers", id:"sellers", href: "#" }
 ]
 
 const mobileMenuOpen = ref(false)
@@ -104,8 +104,8 @@ const mobileMenuOpen = ref(false)
 
             <!--Cart and Log In-->
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <Link :href="route('home.index')"><component :is="ShoppingCartIcon" class="hidden size-6 text-gray-600 group-hover:text-indigo-600"/></Link>   <!--Undefined href-->
-                <Link :href="route('home.show')" class="text-sm/1 pl-5 font-extrabold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></Link>     <!--Undefined href-->
+                <Link href="#"><component :is="ShoppingCartIcon" class="hidden size-6 text-gray-600 group-hover:text-indigo-600"/></Link>
+                <Link href="#" class="text-sm/1 pl-5 font-extrabold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></Link>
             </div>
         </nav>
 
@@ -149,7 +149,7 @@ const mobileMenuOpen = ref(false)
                         
                         <!--Log In-->
                         <div class="py-6">
-                            <Link :href="route('home.show')" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log in</Link> <!--Undefined href-->
+                            <Link href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log in</Link>
                         </div>
                     </div>
                 </div>
