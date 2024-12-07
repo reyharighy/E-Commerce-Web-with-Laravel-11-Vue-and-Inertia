@@ -16,7 +16,7 @@ createInertiaApp({
         page.default.layout = page.default.layout || MainLayout
         
         return page
-      },
+    },
     setup({ el, App, props, plugin }) {
         return createSSRApp({ render: () => h(App, props) })
             .use(plugin)

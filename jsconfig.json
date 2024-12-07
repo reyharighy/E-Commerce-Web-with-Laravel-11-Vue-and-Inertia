@@ -7,5 +7,5 @@
         },
         "jsx": "preserve"
     },
-    "exclude": ["node_modules", "publsic"]
+    "exclude": ["node_modules", "public"]
 }
