@@ -29,6 +29,7 @@ use function is_string;
 use function mt_srand;
 use function ob_get_clean;
 use function ob_start;
+use function preg_quote;
 use function sprintf;
 use function str_starts_with;
 use function strlen;
@@ -87,7 +88,7 @@ final class SuiteLoader
                 if ($test->providedData() !== []) {
                     $dataName = $test->dataName();
                     if ($this->options->functional) {
-                        $name = sprintf('/%s\s.*%s.*$/', $name, $dataName);
+                        $name = sprintf('/%s%s$/', preg_quote($name, '/'), preg_quote($test->dataSetAsString(), '/'));
                     } else {
                         if (is_int($dataName)) {
                             $name .= '#' . $dataName;

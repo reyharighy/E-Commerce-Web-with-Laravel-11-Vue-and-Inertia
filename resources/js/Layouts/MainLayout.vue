@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 import { Link } from '@inertiajs/vue3'
 
 import {
@@ -21,7 +21,11 @@ import {
     XMarkIcon
 } from '@heroicons/vue/24/outline'
 
-import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+import { 
+    ChevronDownIcon
+ } from '@heroicons/vue/20/solid'
+
+const route = inject('route');
 
 const dropDownMenu = [
     { name: "Shop", id: "shop"},
@@ -30,18 +34,18 @@ const dropDownMenu = [
 
 const subMenu = {
     "Shop": [
-        { name: "Shop-1", id: "shop-1", description: "Description of Shop-1", href: "/", icon: ShoppingBagIcon }, // Undefined href
-        { name: "Shop-2", id: "shop-2", description: "Description of Shop-2", href: "/", icon: ShoppingBagIcon }, // Undefined href
+        { name: "Shop-1", id: "shop-1", description: "Description of Shop-1", href: route('home.index'), icon: ShoppingBagIcon }, // Undefined href
+        { name: "Shop-2", id: "shop-2", description: "Description of Shop-2", href: route('home.show'), icon: ShoppingBagIcon }, // Undefined href
     ],
     "Top Sales": [
-        { name: "Top Sales-1", id: "top-sales-1", description: "Description of Top Sales-1", href: "/", icon: ShoppingBagIcon }, // Undefined href
-        { name: "Top Sales-2", id: "top-sales-2", description: "Description of Top Sales-2", href: "/", icon: ShoppingBagIcon }, // Undefined href
+        { name: "Top Sales-1", id: "top-sales-1", description: "Description of Top Sales-1", href: route('home.index'), icon: ShoppingBagIcon }, // Undefined href
+        { name: "Top Sales-2", id: "top-sales-2", description: "Description of Top Sales-2", href: route('home.show'), icon: ShoppingBagIcon }, // Undefined href
     ]
 }
 
 const navbarMenu = [
-    { name: "Offers", id:"offers", href: "/" },         // Undefined href
-    { name: "Sellers", id:"sellers", href: "/" }        // Undefined href
+    { name: "Offers", id:"offers", href: route('home.index') },
+    { name: "Sellers", id:"sellers", href: route('home.show') }
 ]
 
 const mobileMenuOpen = ref(false)
@@ -53,7 +57,7 @@ const mobileMenuOpen = ref(false)
             
             <!--Company Logo-->
             <div class="flex lg:flex-1">
-                <Link href="/" class="-m-1.5 p-1.5">
+                <Link :href="route('home.index')" class="-m-1.5 p-1.5">
                     <span class="sr-only">The company name is Shop.CO.</span>
                     <div class="text-[30px] font-integralcf-extrabold">SHOP<span class="text-[#00adb5]">.CO</span></div>
                 </Link>
@@ -100,8 +104,8 @@ const mobileMenuOpen = ref(false)
 
             <!--Cart and Log In-->
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <Link href="#"><component :is="ShoppingCartIcon" class="hidden size-6 text-gray-600 group-hover:text-indigo-600"/></Link>   <!--Undefined href-->
-                <Link href="#" class="text-sm/1 pl-5 font-extrabold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></Link>     <!--Undefined href-->
+                <Link :href="route('home.index')"><component :is="ShoppingCartIcon" class="hidden size-6 text-gray-600 group-hover:text-indigo-600"/></Link>   <!--Undefined href-->
+                <Link :href="route('home.show')" class="text-sm/1 pl-5 font-extrabold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></Link>     <!--Undefined href-->
             </div>
         </nav>
 
@@ -112,7 +116,7 @@ const mobileMenuOpen = ref(false)
                 <div class="flex items-center justify-between">
                     
                     <!--Company Logo-->
-                    <Link href="/" class="-m-1.5 p-1.5">
+                    <Link :href="route('home.index')" class="-m-1.5 p-1.5">
                         <span class="sr-only">The company name is Shop.CO.</span>
                         <div class="text-[30px] font-integralcf-extrabold">SHOP<span class="text-[#00adb5]">.CO</span></div>
                     </Link>
@@ -145,12 +149,14 @@ const mobileMenuOpen = ref(false)
                         
                         <!--Log In-->
                         <div class="py-6">
-                            <Link href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log in</Link> <!--Undefined href-->
+                            <Link :href="route('home.show')" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log in</Link> <!--Undefined href-->
                         </div>
                     </div>
                 </div>
             </DialogPanel>
         </Dialog>
     </header>
+
     <slot></slot>
+
 </template>

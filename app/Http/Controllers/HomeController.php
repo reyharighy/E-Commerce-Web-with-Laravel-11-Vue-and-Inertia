@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class HomeController extends Controller
 {
     public function index() {
-        return Inertia::render(
-            "HomePage/Index",
-            [
-                "message" => "Hello World!"
-            ]
-        );
+        return Inertia::render('HomePage/Index');
+    }
+
+    public function show() {
+        return Inertia::render('HomePage/Show');
     }
 }

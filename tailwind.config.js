@@ -19,10 +19,7 @@ export default {
         },
     },
 
-    plugins: [
-        forms,
-        require('@headlessui/tailwindcss')({ prefix:'ui' })
-    ],
+    plugins: [forms],
 
     "editor.quickSuggestions": {
         "strings": "on"
